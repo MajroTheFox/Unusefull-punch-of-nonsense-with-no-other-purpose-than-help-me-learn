@@ -5,4 +5,4 @@ for x in range(8):
     print(riadok)
     riadok = ""
     for y in range(8):
-        riadok = riadok + riadok
+        riadok = riadok + str(y)
