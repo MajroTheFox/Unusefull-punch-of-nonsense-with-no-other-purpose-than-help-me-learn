@@ -1,4 +1,8 @@
+x = int(0)
+y = int(0)
+riadok = str("")
 for x in range(8):
-    print(x)
+    print(riadok)
+    riadok = ""
     for y in range(8):
-        print(y)
+        riadok = riadok + riadok
