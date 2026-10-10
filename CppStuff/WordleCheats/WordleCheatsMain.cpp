@@ -2,6 +2,6 @@
 #include<fstream>
 using namespace std;
 int main(){
-    //You better put some code in here, brochacho!
+    //Okay, I am too lazy to actually do this RN.
     return 0;
 }
