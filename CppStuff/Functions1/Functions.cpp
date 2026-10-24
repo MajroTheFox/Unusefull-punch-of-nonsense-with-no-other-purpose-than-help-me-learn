@@ -8,6 +8,7 @@ string wonderer_1_2_3_b_command = "wonderer_b";
 string introduction = "introduction";
 string primes_find_command = "primes";
 string primes_check_command = "primes_check";
+string highest_prime_command = "highest_prime";
 void commands(){
     //Don't forget to add any new command here!
     cout<<show_commands_command<<" - Shows usable commands."<<endl;
@@ -17,6 +18,7 @@ void commands(){
     cout<<introduction<<" - Introduces the program."<<endl;
     cout<<primes_find_command<<" - Finds prime numbers."<<endl;
     cout<<primes_check_command<<" - Checks if a number is prime."<<endl;
+    cout<<highest_prime_command<<" - Searches for the highest prime number lower than input."<<endl;
 }
 void wonderer_1_2_3_a(){
     cout<<"The wonderer a simulates a sprite randomly wondering in a set number of dimensions and tests how many times he returns to where he started (home). It moves in every available dimension by either -1 or 1."<<endl;
@@ -394,6 +396,26 @@ void primes_check(){
         cout<<n<<" is not a prime number."<<endl;
     }
 }
+void highest_prime(){
+    cout<<"Enter a number, from which you want to find the highest prime number: ";
+    int n;
+    cin>>n;
+    int i = n;
+    while(i > 1){
+        int j;
+        int is_prime = 1;
+        for(j = 2; j < i; j++){
+            if(i % j == 0){
+                is_prime = 0;
+            }
+        }
+        if(is_prime == 1){
+            cout<<"Highest prime number lower than "<<n<<" is "<<j<<"."<<endl;
+            i = 0;
+        }
+        i--;
+    }
+}
 int main(){
     string response = introduction;
     while(response != end_program_command){
@@ -414,6 +436,9 @@ int main(){
         }
         else if(response == primes_check_command){
             primes_check();
+        }
+        else if(response == highest_prime_command){
+            highest_prime();
         }
         else{
             cout<<"That command does not exist. To view the full list of commands, enter "<<show_commands_command<<endl;
