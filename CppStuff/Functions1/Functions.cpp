@@ -6,13 +6,17 @@ string end_program_command = "end";
 string wonderer_1_2_3_a_command = "wonderer_a";
 string wonderer_1_2_3_b_command = "wonderer_b";
 string introduction = "introduction";
+string primes_find_command = "primes";
+string primes_check_command = "primes_check";
 void commands(){
     //Don't forget to add any new command here!
-    cout<<show_commands_command<<" - Shows usable commands"<<endl;
-    cout<<end_program_command<<" - Ends program"<<endl;
-    cout<<wonderer_1_2_3_a_command<<" - Runs wonderer program a"<<endl;
-    cout<<wonderer_1_2_3_b_command<<" - Runs wonderer program b"<<endl;
-    cout<<introduction<<" - Introduces the program"<<endl;
+    cout<<show_commands_command<<" - Shows usable commands."<<endl;
+    cout<<end_program_command<<" - Ends program."<<endl;
+    cout<<wonderer_1_2_3_a_command<<" - Runs wonderer program a."<<endl;
+    cout<<wonderer_1_2_3_b_command<<" - Runs wonderer program b."<<endl;
+    cout<<introduction<<" - Introduces the program."<<endl;
+    cout<<primes_find_command<<" - Finds prime numbers."<<endl;
+    cout<<primes_check_command<<" - Checks if a number is prime."<<endl;
 }
 void wonderer_1_2_3_a(){
     cout<<"The wonderer a simulates a sprite randomly wondering in a set number of dimensions and tests how many times he returns to where he started (home). It moves in every available dimension by either -1 or 1."<<endl;
@@ -349,6 +353,47 @@ void wonderer_1_2_3_b(){
     cout<<"Sprite visited home "<<home_visits<<" times."<<endl;
     cout<<"Highest |x| was "<<max_x<<endl<<"Highest |y| was "<<max_y<<endl<<"Highest |z| was "<<max_z<<endl;
 }
+void primes_find(){
+    cout<<"How many prime numbers do you want to find? ";
+    int n;
+    cin>>n;
+    cout<<"Searching for "<<n<<" prime numbers..."<<endl;
+    int i = 2;
+    int primes_found = 0;
+    while(primes_found < n){
+        int j;
+        int is_prime = 1;
+        for(j = 2; j < i; j++){
+            if(i % j == 0){
+                is_prime = 0;
+            }
+        }
+        if(is_prime == 1){
+            cout<<i<<endl;
+            primes_found ++;
+        }
+        i++;
+    }
+
+}
+void primes_check(){
+    cout<<"Enter a number you want to check: ";
+    int n;
+    cin>>n;
+    int i;
+    int is_prime = 1;
+    for(i = 2; i < n; i++){
+        if(n % i == 0){
+            is_prime = 0;
+        }
+    }
+    if(is_prime == 1){
+        cout<<n<<" is a prime number."<<endl;
+    }
+    else{
+        cout<<n<<" is not a prime number."<<endl;
+    }
+}
 int main(){
     string response = introduction;
     while(response != end_program_command){
@@ -364,10 +409,17 @@ int main(){
         else if (response == introduction){
             cout<<"Greetings, user! This is a program, that repeats itself. It is basically a terminal. Enter "<<show_commands_command<<" to view all commands."<<endl;
         }
+        else if (response == primes_find_command){
+            primes_find();
+        }
+        else if(response == primes_check_command){
+            primes_check();
+        }
         else{
             cout<<"That command does not exist. To view the full list of commands, enter "<<show_commands_command<<endl;
         }
         cin>>response;
     }
+    cout<<"Ending program";
     return 0;
 }
